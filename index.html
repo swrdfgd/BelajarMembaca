@@ -210,7 +210,11 @@
 
 <script>
 daftarKata[122] = [['tu','na','dak','sa'],];
-daftarKata[128] = [['ku','mur'],];
+daftarKata[125] = [['men','tol'],['te','la','kan'],['a','tu','ran'],['un','jun'],['be','ri','ngin'],];
+daftarKata[128] = [['ku','mur'],['ber','pan','cu','ran'],['per','te','lu','ran'],['mer','li','lin'],];
+daftarKata[130] = [['ret','ro','ma','mal']];
+daftarKata[136] = [['tang','kul'],['me','mang','kas']];
+daftarKata[145] = [['bio','akti','vi','tas'],['bio','ak','tivi','tas'],['bio','ak','ti','vitas']];
 daftarKata[152] = [['nef','ri','di','um'],];
 </script>
 
@@ -266,10 +270,10 @@ daftarKata[152] = [['nef','ri','di','um'],];
           // Hapus tag tr terakhir yang tidak diperlukan
           hasilTabel += '</tr>';
           document.getElementById('isiBaca').innerHTML = hasilTabel;
-          daftarDaftarKata = [122,128,152];
+          daftarDaftarKata = [122,125,128,130,136,145,152];
           for (let i = 4; i < 6; i++) {if ((Math.random()<1/2)&&(level>121)){
             pilihanDaftarKata = daftarDaftarKata[Math.floor(Math.random()*daftarDaftarKata.length)];
-            if (level < pilihanDaftarKata){pilihanDaftarKata = 122}
+            while (level < pilihanDaftarKata){pilihanDaftarKata = daftarDaftarKata[Math.floor(Math.random()*daftarDaftarKata.length)];}
             daftarKataTerpilih = daftarKata[pilihanDaftarKata];
             kataTerpilih = daftarKataTerpilih[Math.floor(Math.random()*daftarKataTerpilih.length)];
             if (kataTerpilih.length == 4){
@@ -277,10 +281,26 @@ daftarKata[152] = [['nef','ri','di','um'],];
                 document.getElementById(`baris${i}kolom${j}`).innerHTML = kataTerpilih[j];
               }
             }
+            if (kataTerpilih.length == 3){
+              pilihanKolomAwal = Math.floor(Math.random()*2);
+              document.getElementById(`baris${i}kolom${pilihanKolomAwal}`).innerHTML = kataTerpilih[0];
+              document.getElementById(`baris${i}kolom${pilihanKolomAwal+1}`).innerHTML = kataTerpilih[1];
+              document.getElementById(`baris${i}kolom${pilihanKolomAwal+2}`).innerHTML = kataTerpilih[2];
+            }
             if (kataTerpilih.length == 2){
               pilihanKolomAwal = Math.floor(Math.random()*3);
               document.getElementById(`baris${i}kolom${pilihanKolomAwal}`).innerHTML = kataTerpilih[0];
               document.getElementById(`baris${i}kolom${pilihanKolomAwal+1}`).innerHTML = kataTerpilih[1];
+              if (pilihanKolomAwal==0){
+                pilihanDaftarKata = daftarDaftarKata[Math.floor(Math.random()*daftarDaftarKata.length)];
+                while (level < pilihanDaftarKata){pilihanDaftarKata = daftarDaftarKata[Math.floor(Math.random()*daftarDaftarKata.length)];}
+                daftarKataTerpilih = daftarKata[pilihanDaftarKata];
+                kataTerpilih = daftarKataTerpilih[Math.floor(Math.random()*daftarKataTerpilih.length)];
+                if (kataTerpilih.length == 2){
+                  document.getElementById(`baris${i}kolom${2}`).innerHTML = kataTerpilih[0];
+                  document.getElementById(`baris${i}kolom${3}`).innerHTML = kataTerpilih[1];
+                }
+              }
             }
           }
           }
@@ -307,6 +327,14 @@ daftarKata[152] = [['nef','ri','di','um'],];
               if(kata.length!=1){document.getElementById(`baris${i}kolom${j}`).innerHTML += kata};
             }
           }
+          for (let j = 0; j < jumlahKolom; j++) {if ((Math.random()<1/2)&&(level>121)){
+            pilihanDaftarKata = daftarDaftarKata[Math.floor(Math.random()*daftarDaftarKata.length)];
+            while (level < pilihanDaftarKata){pilihanDaftarKata = daftarDaftarKata[Math.floor(Math.random()*daftarDaftarKata.length)];}
+            daftarKataTerpilih = daftarKata[pilihanDaftarKata];
+            kataTerpilih = daftarKataTerpilih[Math.floor(Math.random()*daftarKataTerpilih.length)];
+            document.getElementById(`baris7kolom${j}`).innerHTML = kataTerpilih.join("");         
+          }}
+
         }
         </script>
 </body>
