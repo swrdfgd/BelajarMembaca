@@ -20,6 +20,7 @@
     <div id="input-container"></div>
 
     <!-- menyertakan file JavaScript yang berisi kode untuk generate elemen select -->
+
     <script>
       daftarHurufMati = 'cdfghjklmnpqrstvwyzx';
       daftarHurufMati2 = 'bcdfghjklmnpqrstvwyzx';
@@ -30,6 +31,8 @@
       daftarHurufMati3.push('');
       daftarHurufVokal = 'iueo';
       daftarHurufVokal2 = 'aiueo';
+      
+      daftarKata = [];
       const generateInputList = () => {
         // menentukan jumlah elemen option yang akan dibuat
 
@@ -50,6 +53,7 @@
 
       // menambahkan elemen option ke dalam select
       select.appendChild(option);
+      daftarKata.push([]);
 
     // menggunakan looping untuk membuat elemen option sebanyak numInputs kali
     for (let i = 0; i < daftarHurufMati.length; i++) {
@@ -63,6 +67,7 @@
 
       // menambahkan elemen option ke dalam select
       select.appendChild(option);
+      daftarKata.push([]);
       levelTerakhir = option.value;
     }
 
@@ -78,6 +83,7 @@
 
       // menambahkan elemen option ke dalam select
       select.appendChild(option);
+      daftarKata.push([]);
       levelTerakhir++;
     for (let j = 0; j < daftarHurufMati2.length; j++) {
       // membuat elemen option
@@ -90,6 +96,7 @@
 
       // menambahkan elemen option ke dalam select
       select.appendChild(option);
+      daftarKata.push([]);
       levelTerakhir++;
     }
     }
@@ -105,6 +112,7 @@
 
       // menambahkan elemen option ke dalam select
       select.appendChild(option);
+      daftarKata.push([]);
       levelTerakhir++;
     }
 
@@ -119,6 +127,7 @@
 
       // menambahkan elemen option ke dalam select
       select.appendChild(option);
+      daftarKata.push([]);
       levelTerakhir++;
     }
 
@@ -133,6 +142,7 @@
 
       // menambahkan elemen option ke dalam select
       select.appendChild(option);
+      daftarKata.push([]);
       levelTerakhir++;
     }
 
@@ -148,6 +158,7 @@
 
       // menambahkan elemen option ke dalam select
       select.appendChild(option);
+      daftarKata.push([]);
       levelTerakhir++;
     }
     }
@@ -163,8 +174,26 @@
 
       // menambahkan elemen option ke dalam select
       select.appendChild(option);
+      daftarKata.push([]);
       levelTerakhir++;
     }
+   
+    tambahanBaca = ['y vokal'];
+    for (let i = 0; i < tambahanBaca.length; i++){
+      // membuat elemen option
+      const option = document.createElement('option');
+
+      // menetapkan value dan text dari elemen option
+      option.value = levelTerakhir + 1
+      option.id = "opsi" + option.value;
+      option.textContent = `Level ${option.value} - ${tambahanBaca[i]}`;
+
+      // menambahkan elemen option ke dalam select
+      select.appendChild(option);
+      daftarKata.push([]);
+      levelTerakhir++;
+    }
+
 
     select.id = 'daftarLevel';
     select.setAttribute('onchange','generateBacaan();');
@@ -177,6 +206,12 @@
 
   // memanggil fungsi generateInputList saat halaman diload
   window.addEventListener('load', generateInputList);
+</script>
+
+<script>
+daftarKata[122] = [['tu','na','dak','sa'],];
+daftarKata[128] = [['ku','mur'],];
+daftarKata[152] = [['nef','ri','di','um'],];
 </script>
 
   <!-- Buat sebuah tabel untuk menampilkan hasil -->
@@ -219,8 +254,11 @@
               }
               if (kata[0]=='.'){kata=kataAcak[Math.floor(Math.random()*114)+1]+kata.split('...')[1];}
               if (kata.split('+').length > 1){kata=`${daftarHurufMati3[Math.floor(daftarHurufMati3.length*Math.random())]}${daftarHurufVokal2[Math.floor(daftarHurufVokal2.length*Math.random())]}${daftarHurufVokal2[Math.floor(daftarHurufVokal2.length*Math.random())]}${daftarHurufMati25[Math.floor(daftarHurufMati25.length*Math.random())]}`;}
+              if (kata.split('vokal').length > 1){kata=`${daftarHurufMati3[Math.floor(daftarHurufMati3.length*Math.random())]}${kata.split(' vokal')[0]}`;
+                if (Math.random() < 1/2){kata += daftarHurufMati3[Math.floor(daftarHurufMati25.length*Math.random())];}
+              }
               // Tambahkan suku kata ke tabel
-              hasilTabel += `<td>${kata}</td>`;
+              hasilTabel += `<td id="baris${i}kolom${j}">${kata}</td>`;
             }
             // Tambahkan tag tr setelah selesai menampilkan kolom di baris ini
             hasilTabel += '</tr><tr>';
@@ -228,6 +266,47 @@
           // Hapus tag tr terakhir yang tidak diperlukan
           hasilTabel += '</tr>';
           document.getElementById('isiBaca').innerHTML = hasilTabel;
+          daftarDaftarKata = [122,128,152];
+          for (let i = 4; i < 6; i++) {if ((Math.random()<1/2)&&(level>121)){
+            pilihanDaftarKata = daftarDaftarKata[Math.floor(Math.random()*daftarDaftarKata.length)];
+            if (level < pilihanDaftarKata){pilihanDaftarKata = 122}
+            daftarKataTerpilih = daftarKata[pilihanDaftarKata];
+            kataTerpilih = daftarKataTerpilih[Math.floor(Math.random()*daftarKataTerpilih.length)];
+            if (kataTerpilih.length == 4){
+              for (let j = 0; j < jumlahKolom; j++) {
+                document.getElementById(`baris${i}kolom${j}`).innerHTML = kataTerpilih[j];
+              }
+            }
+            if (kataTerpilih.length == 2){
+              pilihanKolomAwal = Math.floor(Math.random()*3);
+              document.getElementById(`baris${i}kolom${pilihanKolomAwal}`).innerHTML = kataTerpilih[0];
+              document.getElementById(`baris${i}kolom${pilihanKolomAwal+1}`).innerHTML = kataTerpilih[1];
+            }
+          }
+          }
+          for (let i = 6; i < 8; i++) {
+            // Buat sebuah loop untuk menampilkan kolom
+            for (let j = 0; j < jumlahKolom; j++) {
+              // Tentukan suku kata acak yang akan ditambahkan ke baris ini
+              const indexKataAcak = Math.floor(Math.random() * kataAcak.length);
+              var kata = kataAcak[indexKataAcak];
+              ulangSebelum = Math.floor(1/(1-Math.random()));
+              while (ulangSebelum > kataAcak.length){ulangSebelum = Math.floor(1/(1-Math.random()));}
+              if ((Math.random() < 1/2)&&(level > 1)){kata = kataAcak[kataAcak.length-ulangSebelum];}
+              if ((daftarHurufVokal2.includes(kata[0]))&&(kata.length>1)){
+               if(daftarHurufVokal2.includes(kata[1])){
+               kata=daftarHurufMati3[Math.floor(daftarHurufMati3.length*Math.random())]+kata;
+               }
+              }
+              if (kata[0]=='.'){kata=kataAcak[Math.floor(Math.random()*114)+1]+kata.split('...')[1];}
+              if (kata.split('+').length > 1){kata=`${daftarHurufMati3[Math.floor(daftarHurufMati3.length*Math.random())]}${daftarHurufVokal2[Math.floor(daftarHurufVokal2.length*Math.random())]}${daftarHurufVokal2[Math.floor(daftarHurufVokal2.length*Math.random())]}${daftarHurufMati25[Math.floor(daftarHurufMati25.length*Math.random())]}`;}
+              if (kata.split('vokal').length > 1){kata=`${daftarHurufMati3[Math.floor(daftarHurufMati3.length*Math.random())]}${kata.split(' vokal')[0]}`;
+                if (Math.random() < 1/2){kata += daftarHurufMati3[Math.floor(daftarHurufMati25.length*Math.random())];}
+              }
+              // Tambahkan suku kata ke tabel
+              if(kata.length!=1){document.getElementById(`baris${i}kolom${j}`).innerHTML += kata};
+            }
+          }
         }
         </script>
 </body>
