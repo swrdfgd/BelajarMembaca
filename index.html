@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contoh Program JavaScript</title>
+  <!-- Tambahkan style untuk menghilangkan border pada tabel, memberikan jarak antara sel-sel, dan mengubah ukuran font -->
+  <style>
+    table {
+      border-collapse: collapse;
+      margin: 0 auto;
+    }
+    td {
+      padding: 20px;
+      font-size: 24px;
+    }
+  </style>
+</head>
+
+<body>
+    <!-- elemen div yang akan menjadi container untuk elemen select -->
+    <div id="input-container"></div>
+
+    <!-- menyertakan file JavaScript yang berisi kode untuk generate elemen select -->
+    <script>
+      daftarHurufMati = 'cdfghjklmnpqrstvwyzx';
+      daftarHurufMati2 = 'bcdfghjklmnpqrstvwyzx';
+      daftarHurufVokal = 'iueo';
+      daftarHurufVokal2 = 'aiueo';
+      const generateInputList = () => {
+        // menentukan jumlah elemen option yang akan dibuat
+
+        // mengambil elemen div yang akan menjadi container untuk elemen select
+        const container = document.getElementById('input-container');
+
+    // membuat elemen select
+    const select = document.createElement('select');
+    
+    
+   // membuat elemen option
+      const option = document.createElement('option');
+
+      // menetapkan value dan text dari elemen option
+      option.value = 1;
+      option.id = "opsi" + option.value;
+      option.textContent = `Level 1 - a, ba`;
+
+      // menambahkan elemen option ke dalam select
+      select.appendChild(option);
+
+    // menggunakan looping untuk membuat elemen option sebanyak numInputs kali
+    for (let i = 0; i < daftarHurufMati.length; i++) {
+      // membuat elemen option
+      const option = document.createElement('option');
+
+      // menetapkan value dan text dari elemen option
+      option.value = i + 2;
+      option.id = "opsi" + option.value;
+      option.textContent = `Level ${i+2} - ${daftarHurufMati[i]}a`;
+
+      // menambahkan elemen option ke dalam select
+      select.appendChild(option);
+      levelTerakhir = option.value;
+    }
+
+    // menggunakan looping untuk membuat elemen option sebanyak numInputs kali
+    for (let i = 0; i < daftarHurufVokal.length; i++) {
+      // membuat elemen option
+      const option = document.createElement('option');
+
+      // menetapkan value dan text dari elemen option
+      option.value = parseInt(levelTerakhir) + 1
+      option.id = "opsi" + option.value;
+      option.textContent = `Level ${option.value} - ${daftarHurufVokal[i]}`;
+
+      // menambahkan elemen option ke dalam select
+      select.appendChild(option);
+      levelTerakhir++;
+    for (let j = 0; j < daftarHurufMati2.length; j++) {
+      // membuat elemen option
+      const option = document.createElement('option');
+
+      // menetapkan value dan text dari elemen option
+      option.value = levelTerakhir + 1
+      option.id = "opsi" + option.value;
+      option.textContent = `Level ${option.value} - ${daftarHurufMati2[j]}${daftarHurufVokal[i]}`;
+
+      // menambahkan elemen option ke dalam select
+      select.appendChild(option);
+      levelTerakhir++;
+    }
+    }
+
+    select.id = 'daftarLevel';
+    select.setAttribute('onchange','generateBacaan();');
+
+    // menambahkan elemen select ke dalam container
+    container.appendChild(select);
+  }
+
+  // memanggil fungsi generateInputList saat halaman diload
+  window.addEventListener('load', generateInputList);
+</script>
+
+  <!-- Buat sebuah tabel untuk menampilkan hasil -->
+  <table>
+    <!-- Buat sebuah loop untuk menampilkan baris -->
+    <tbody id = 'isiBaca'>
+    </tbody>
+  </table>
+<!-- Buat sebuah loop untuk menampilkan kolom -->
+        <script>
+        function generateBacaan(){
+          var hasilTabel = '<tr>';
+          // Definisikan sebuah array yang berisi beberapa suku kata acak
+          var kataAcak = ['a', 'ba'];
+          var levelAsli = parseInt(document.getElementById('daftarLevel').value);
+          level = 0 + parseInt(document.getElementById('daftarLevel').value);
+          if (level > 1){
+            for (let i = 2; i < (level + 1); i++){
+              kataAcak.push(document.getElementById('opsi'+i).innerHTML.split('- ')[1]);
+            }
+          }
+
+          // Definisikan jumlah baris dan kolom yang diinginkan
+          const jumlahBaris = 10;
+          const jumlahKolom = 4;
+
+          for (let i = 0; i < jumlahBaris; i++) {
+            // Buat sebuah loop untuk menampilkan kolom
+            for (let j = 0; j < jumlahKolom; j++) {
+              // Tentukan suku kata acak yang akan ditambahkan ke baris ini
+              const indexKataAcak = Math.floor(Math.random() * kataAcak.length);
+              var kata = kataAcak[indexKataAcak];
+              if (Math.random() < 1/2){kata = kataAcak[kataAcak.length-1];}
+              // Tambahkan suku kata ke tabel
+              hasilTabel += `<td>${kata}</td>`;
+            }
+            // Tambahkan tag tr setelah selesai menampilkan kolom di baris ini
+            hasilTabel += '</tr><tr>';
+          }
+          // Hapus tag tr terakhir yang tidak diperlukan
+          hasilTabel += '</tr>';
+          document.getElementById('isiBaca').innerHTML = hasilTabel;
+        }
+        </script>
+</body>
+</html>
