@@ -23,6 +23,9 @@
     <script>
       daftarHurufMati = 'cdfghjklmnpqrstvwyzx';
       daftarHurufMati2 = 'bcdfghjklmnpqrstvwyzx';
+      daftarHurufMati3 = daftarHurufMati2.split('');
+      daftarHurufMati3.push('ng');
+      daftarHurufMati3.push('');
       daftarHurufVokal = 'iueo';
       daftarHurufVokal2 = 'aiueo';
       const generateInputList = () => {
@@ -117,6 +120,36 @@
       levelTerakhir++;
     }
 
+    if (true){
+      // membuat elemen option
+      const option = document.createElement('option');
+
+      // menetapkan value dan text dari elemen option
+      option.value = levelTerakhir + 1
+      option.id = "opsi" + option.value;
+      option.textContent = `Level ${option.value} - ...ng`;
+
+      // menambahkan elemen option ke dalam select
+      select.appendChild(option);
+      levelTerakhir++;
+    }
+
+    for (let j = 0; j < daftarHurufVokal2.length; j++) {
+    for (let i = j; i < daftarHurufVokal2.length; i++) {
+      // membuat elemen option
+      const option = document.createElement('option');
+
+      // menetapkan value dan text dari elemen option
+      option.value = levelTerakhir + 1
+      option.id = "opsi" + option.value;
+      option.textContent = `Level ${option.value} - ${daftarHurufVokal2[j]}${daftarHurufVokal2[i]}`;
+
+      // menambahkan elemen option ke dalam select
+      select.appendChild(option);
+      levelTerakhir++;
+    }
+    }
+
     select.id = 'daftarLevel';
     select.setAttribute('onchange','generateBacaan();');
     select.setAttribute('oninput','generateBacaan();');
@@ -160,8 +193,15 @@
               // Tentukan suku kata acak yang akan ditambahkan ke baris ini
               const indexKataAcak = Math.floor(Math.random() * kataAcak.length);
               var kata = kataAcak[indexKataAcak];
-              if ((Math.random() < 1/2)&&(level > 1)){kata = kataAcak[kataAcak.length-1];}
-              if (kata[0]=='.'){kata=kataAcak[Math.floor(Math.random()*114)+1]+kata.split('...')[1]}
+              ulangSebelum = Math.floor(1/(1-Math.random()));
+              while (ulangSebelum > kataAcak.length){ulangSebelum = Math.floor(1/(1-Math.random()));}
+              if ((Math.random() < 1/2)&&(level > 1)){kata = kataAcak[kataAcak.length-ulangSebelum];}
+              if ((daftarHurufVokal2.includes(kata[0]))&&(kata.length>1)){
+               if(daftarHurufVokal2.includes(kata[1])){
+               kata=daftarHurufMati3[Math.floor(daftarHurufMati3.length*Math.random())]+kata;
+               }
+              }
+              if (kata[0]=='.'){kata=kataAcak[Math.floor(Math.random()*114)+1]+kata.split('...')[1];}
               // Tambahkan suku kata ke tabel
               hasilTabel += `<td>${kata}</td>`;
             }
