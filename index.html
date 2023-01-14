@@ -18,6 +18,7 @@
 <body>
     <!-- elemen div yang akan menjadi container untuk elemen select -->
     <div id="input-container"></div>
+    <div id="ajakEja"></div>
 
     <!-- menyertakan file JavaScript yang berisi kode untuk generate elemen select -->
 
@@ -194,6 +195,22 @@
       levelTerakhir++;
     }
 
+    levelEjaan = levelTerakhir - 1;
+    for (let i = 0; i < daftarHurufMati2.length; i++){
+      // membuat elemen option
+      const option = document.createElement('option');
+
+      // menetapkan value dan text dari elemen option
+      option.value = levelTerakhir + 1
+      option.id = "opsi" + option.value;
+      option.textContent = `Level ${option.value} - ${daftarHurufMati2[i]} (mengeja)`;
+
+      // menambahkan elemen option ke dalam select
+      select.appendChild(option);
+      daftarKata.push([]);
+      levelTerakhir++;
+    }
+
 
     select.id = 'daftarLevel';
     select.setAttribute('onchange','generateBacaan();');
@@ -218,6 +235,17 @@ daftarKata[145] = [['bio','akti','vi','tas'],['bio','ak','tivi','tas'],['bio','a
 daftarKata[152] = [['nef','ri','di','um'],];
 </script>
 
+<script>
+//cekEjaan
+function cekEjaan(lihatBacaan,levelMengeja){
+  for (let i = 0; i < lihatBacaan.length; i++) {
+  if (daftarHurufMati2.substring(levelMengeja).includes(lihatBacaan[i])){return false}
+  }
+  return true
+}
+
+</script>
+
   <!-- Buat sebuah tabel untuk menampilkan hasil -->
   <table>
     <!-- Buat sebuah loop untuk menampilkan baris -->
@@ -232,6 +260,7 @@ daftarKata[152] = [['nef','ri','di','um'],];
           var kataAcak = ['a', 'ba'];
           var levelAsli = parseInt(document.getElementById('daftarLevel').value);
           level = 0 + parseInt(document.getElementById('daftarLevel').value);
+          levelMengeja = level - levelEjaan;
           if (level > 1){
             for (let i = 2; i < (level + 1); i++){
               kataAcak.push(document.getElementById('opsi'+i).innerHTML.split('- ')[1]);
@@ -261,6 +290,7 @@ daftarKata[152] = [['nef','ri','di','um'],];
               if (kata.split('vokal').length > 1){kata=`${daftarHurufMati3[Math.floor(daftarHurufMati3.length*Math.random())]}${kata.split(' vokal')[0]}`;
                 if (Math.random() < 1/2){kata += daftarHurufMati3[Math.floor(daftarHurufMati25.length*Math.random())];}
               }
+              if (kata.split('(mengeja)').length > 1){kata=`${kata.split(' (mengeja)')[0]}`;}
               // Tambahkan suku kata ke tabel
               hasilTabel += `<td id="baris${i}kolom${j}">${kata}</td>`;
             }
@@ -323,8 +353,9 @@ daftarKata[152] = [['nef','ri','di','um'],];
               if (kata.split('vokal').length > 1){kata=`${daftarHurufMati3[Math.floor(daftarHurufMati3.length*Math.random())]}${kata.split(' vokal')[0]}`;
                 if (Math.random() < 1/2){kata += daftarHurufMati3[Math.floor(daftarHurufMati25.length*Math.random())];}
               }
+              if (kata.split('(mengeja)').length > 1){kata=`${kata.split(' (mengeja)')[0]}`;}
               // Tambahkan suku kata ke tabel
-              if(kata.length!=1){document.getElementById(`baris${i}kolom${j}`).innerHTML += kata};
+              if((kata.length!=1)&&(!daftarHurufMati2.includes(document.getElementById(`baris${i}kolom${j}`).innerHTML))){document.getElementById(`baris${i}kolom${j}`).innerHTML += kata};
             }
           }
           for (let j = 0; j < jumlahKolom; j++) {if ((Math.random()<1/2)&&(level>121)){
@@ -335,7 +366,20 @@ daftarKata[152] = [['nef','ri','di','um'],];
             document.getElementById(`baris7kolom${j}`).innerHTML = kataTerpilih.join("");         
           }}
 
-        }
+         document.getElementById('ajakEja').innerHTML = '' ;
+//mengeja 
+          if (levelMengeja > 0){
+          document.getElementById('ajakEja').innerHTML = '<span style="background-color: #f4cccc">Ajak untuk mengeja kata yang ditandai dengan ini</span>' ;
+          for (let i = 0; i < jumlahBaris; i++) {
+            for (let j = 0; j < jumlahKolom; j++) {
+              lihatBacaan = document.getElementById(`baris${i}kolom${j}`).innerHTML;
+              if (cekEjaan(lihatBacaan,levelMengeja)){document.getElementById(`baris${i}kolom${j}`).innerHTML = '<span style="background-color: #f4cccc">' + lihatBacaan + '</span>'}
+            }
+          }
+          }
+
+        }//akhir fungsi generate
+
         </script>
 </body>
 </html>
