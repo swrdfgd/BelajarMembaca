@@ -12,6 +12,28 @@
       padding: 20px;
       font-size: 24px;
     }
+    select {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      background-color: #fff;
+      color: #333;
+      outline: none;
+      box-shadow: none;
+      appearance: none; /* Untuk menghapus default arrow pada tag select pada beberapa browser */
+    }
+
+    select:hover, select:focus {
+      border-color: #999;
+    }
+
+    select option {
+      padding: 10px;
+      font-size: 16px;
+      background-color: #fff;
+      color: #333;
+    }
   </style>
 </head>
 
@@ -30,6 +52,8 @@
       daftarHurufMati3 = [];
       daftarHurufMati3 = daftarHurufMati25;
       daftarHurufMati3.push('');
+      daftarDobelHuruf = ['sy', 'pr','st'];
+      daftarDobelHurufMati = ['bs','rp'];
       daftarHurufVokal = 'iueo';
       daftarHurufVokal2 = 'aiueo';
       
@@ -117,6 +141,21 @@
       levelTerakhir++;
     }
 
+    for (let i = 0; i < daftarHurufVokal2.length; i++) {
+      // membuat elemen option
+      const option = document.createElement('option');
+
+      // menetapkan value dan text dari elemen option
+      option.value = parseInt(levelTerakhir) + 1
+      option.id = "opsi" + option.value;
+      option.textContent = `Level ${option.value} - ny${daftarHurufVokal2[i]}`;
+
+      // menambahkan elemen option ke dalam select
+      select.appendChild(option);
+      daftarKata.push([]);
+      levelTerakhir++;
+    }
+
     for (let j = 0; j < daftarHurufMati2.length; j++) {
       // membuat elemen option
       const option = document.createElement('option');
@@ -148,7 +187,7 @@
     }
 
     for (let j = 0; j < daftarHurufVokal2.length; j++) {
-    for (let i = j; i < daftarHurufVokal2.length; i++) {
+    for (let i = 0; i < daftarHurufVokal2.length; i++) {
       // membuat elemen option
       const option = document.createElement('option');
 
@@ -195,7 +234,7 @@
       levelTerakhir++;
     }
 
-    levelEjaan = levelTerakhir - 1;
+    levelEjaan = levelTerakhir;
     for (let i = 0; i < daftarHurufMati2.length; i++){
       // membuat elemen option
       const option = document.createElement('option');
@@ -211,6 +250,37 @@
       levelTerakhir++;
     }
 
+    for (let j = 0; j < daftarDobelHuruf.length; j++) {
+    for (let i = 0; i < daftarHurufVokal2.length; i++) {
+      // membuat elemen option
+      const option = document.createElement('option');
+
+      // menetapkan value dan text dari elemen option
+      option.value = parseInt(levelTerakhir) + 1
+      option.id = "opsi" + option.value;
+      option.textContent = `Level ${option.value} - ${daftarDobelHuruf[j]}${daftarHurufVokal2[i]}`;
+
+      // menambahkan elemen option ke dalam select
+      select.appendChild(option);
+      daftarKata.push([]);
+      levelTerakhir++;
+    }
+    }
+
+    for (let j = 0; j < daftarDobelHurufMati.length; j++) {
+      // membuat elemen option
+      const option = document.createElement('option');
+
+      // menetapkan value dan text dari elemen option
+      option.value = levelTerakhir + 1
+      option.id = "opsi" + option.value;
+      option.textContent = `Level ${option.value} - ...${daftarDobelHurufMati[j]}`;
+
+      // menambahkan elemen option ke dalam select
+      select.appendChild(option);
+      daftarKata.push([]);
+      levelTerakhir++;
+    }
 
     select.id = 'daftarLevel';
     select.setAttribute('onchange','generateBacaan();');
@@ -226,14 +296,25 @@
 </script>
 
 <script>
-daftarKata[122] = [['tu','na','dak','sa'],];
-daftarKata[125] = [['men','tol'],['te','la','kan'],['a','tu','ran'],['un','jun'],['be','ri','ngin'],];
-daftarKata[128] = [['ku','mur'],['ber','pan','cu','ran'],['per','te','lu','ran'],['mer','li','lin'],];
-daftarKata[130] = [['ret','ro','ma','mal']];
-daftarKata[136] = [['tang','kul'],['me','mang','kas']];
-daftarKata[145] = [['bio','akti','vi','tas'],['bio','ak','tivi','tas'],['bio','ak','ti','vitas']];
-daftarKata[152] = [['nef','ri','di','um'],];
+daftarKata[16] = [['ka','ta']];
+daftarKata[99] = [['no','va']];
+daftarKata[125] = [['me','le','pih'],['ge','le','dah']];
+daftarKata[127] = [['me','li','rik'],['pa','si','fik'],['tu','na','dak','sa'],['suk','la','pak','sa'],['te','ra','kuk'],];
+daftarKata[128] = [['la','pel'],['sa','bi','lil','lah'],];
+daftarKata[130] = [['ke','ri','ni','ngan'],['sa','ka','pan'],['sa','ri','ngan'],['men','seren','da','hi'],['te','rangan'],['tera','ngan'],['te','ra','ngan'],['ba','lu','han'],['a','li','ran'],['se','ra','pan'],['jam','ban'],['pe','nye','lesai','an'],['pe','nyele','sai','an'],['men','tol'],['te','la','kan'],['a','tu','ran'],['un','jun'],['be','ri','ngin'],['co','ba','an'],['men','du','kun','kan'],];
+daftarKata[131] = [['ge','rip']];
+daftarKata[133] = [['me','nge','jar'],['ku','mur'],['ber','pan','cu','ran'],['per','te','lu','ran'],['mer','li','lin'],];
+daftarKata[134] = [['e','pi','ku','ris'],['se','no','morfis','me'],['seno','mor','fis','me'],['mi','mis']];
+daftarKata[135] = [['se','pen','ju','lat'],['ju','hut'],['ret','ro','ma','mal'],['di','sa','yat']];
+daftarKata[141] = [['ber','lan','ting'],['pung','lor'],['ber','terang','-tera','ngan'],['ber','terang','-te','rangan'],['ber','terang'],['tang','kul'],['me','mang','kas'],['ter','lang','kah','kan'],];
+daftarKata[143] = [['ter','ke','lem','pai'],['pa','ra','sai','ling'],['man','dai']];
+daftarKata[144] = [['auto','ni','sa','si'],['rau','da','tul','janah']];
+daftarKata[151] = [['ra','dio','li','sis'],['bio','akti','vi','tas'],['bio','ak','tivi','tas'],['bio','ak','ti','vitas']];
+daftarKata[163] = [['zoi','dio','fo','li'],];
+daftarKata[167] = [['se','tiar'],['nef','ri','dium'],];
+daftarKata[168] = [['my','ri','ca']];
 </script>
+
 
 <script>
 //cekEjaan
@@ -300,7 +381,7 @@ function cekEjaan(lihatBacaan,levelMengeja){
           // Hapus tag tr terakhir yang tidak diperlukan
           hasilTabel += '</tr>';
           document.getElementById('isiBaca').innerHTML = hasilTabel;
-          daftarDaftarKata = [122,125,128,130,136,145,152];
+          daftarDaftarKata = [16,99,125,127,128,130,131,133,134,135,141,143,144,151,163,167,168];
           for (let i = 4; i < 6; i++) {if ((Math.random()<1/2)&&(level>121)){
             pilihanDaftarKata = daftarDaftarKata[Math.floor(Math.random()*daftarDaftarKata.length)];
             while (level < pilihanDaftarKata){pilihanDaftarKata = daftarDaftarKata[Math.floor(Math.random()*daftarDaftarKata.length)];}
@@ -368,7 +449,7 @@ function cekEjaan(lihatBacaan,levelMengeja){
 
          document.getElementById('ajakEja').innerHTML = '' ;
 //mengeja 
-          if (levelMengeja > 0){
+          if ((levelMengeja > 0)&&(levelAsli <= 189)){
           document.getElementById('ajakEja').innerHTML = '<span style="background-color: #f4cccc">Ajak untuk mengeja kata yang ditandai dengan ini</span>' ;
           for (let i = 0; i < jumlahBaris; i++) {
             for (let j = 0; j < jumlahKolom; j++) {
