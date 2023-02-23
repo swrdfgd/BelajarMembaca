@@ -52,6 +52,9 @@
       daftarHurufMati3 = [];
       daftarHurufMati3 = daftarHurufMati25;
       daftarHurufMati3.push('');
+      daftarHurufHidup = [];
+      daftarHurufHidup = daftarHurufMati3.concat('ny');
+      daftarHurufHidupback = []; daftarHurufHidupback = daftarHurufHidup; 
       daftarDobelHuruf = ['sy', 'pr','st'];
       daftarDobelHurufMati = ['bs','rp'];
       daftarHurufVokal = 'iueo';
@@ -296,22 +299,25 @@
 </script>
 
 <script>
+daftarKata[5] = [['a','ga']];
 daftarKata[16] = [['ka','ta']];
+daftarKata[56] = [['pu','ma']];
+daftarKata[78] = [['pe','pa','ru']];
 daftarKata[99] = [['no','va']];
 daftarKata[125] = [['me','le','pih'],['ge','le','dah']];
 daftarKata[127] = [['me','li','rik'],['pa','si','fik'],['tu','na','dak','sa'],['suk','la','pak','sa'],['te','ra','kuk'],];
 daftarKata[128] = [['la','pel'],['sa','bi','lil','lah'],];
-daftarKata[130] = [['ke','ri','ni','ngan'],['sa','ka','pan'],['sa','ri','ngan'],['men','seren','da','hi'],['te','rangan'],['tera','ngan'],['te','ra','ngan'],['ba','lu','han'],['a','li','ran'],['se','ra','pan'],['jam','ban'],['pe','nye','lesai','an'],['pe','nyele','sai','an'],['men','tol'],['te','la','kan'],['a','tu','ran'],['un','jun'],['be','ri','ngin'],['co','ba','an'],['men','du','kun','kan'],];
+daftarKata[130] = [['men','den','da'],['ke','ri','ni','ngan'],['sa','ka','pan'],['sa','ri','ngan'],['men','seren','da','hi'],['te','rangan'],['tera','ngan'],['te','ra','ngan'],['ba','lu','han'],['a','li','ran'],['se','ra','pan'],['jam','ban'],['pe','nye','lesai','an'],['pe','nyele','sai','an'],['men','tol'],['te','la','kan'],['a','tu','ran'],['un','jun'],['be','ri','ngin'],['co','ba','an'],['men','du','kun','kan'],];
 daftarKata[131] = [['ge','rip']];
-daftarKata[133] = [['me','nge','jar'],['ku','mur'],['ber','pan','cu','ran'],['per','te','lu','ran'],['mer','li','lin'],];
-daftarKata[134] = [['e','pi','ku','ris'],['se','no','morfis','me'],['seno','mor','fis','me'],['mi','mis']];
-daftarKata[135] = [['se','pen','ju','lat'],['ju','hut'],['ret','ro','ma','mal'],['di','sa','yat']];
-daftarKata[141] = [['ber','lan','ting'],['pung','lor'],['ber','terang','-tera','ngan'],['ber','terang','-te','rangan'],['ber','terang'],['tang','kul'],['me','mang','kas'],['ter','lang','kah','kan'],];
+daftarKata[133] = [['mer','ta','pal'],['me','nge','jar'],['ku','mur'],['ber','pan','cu','ran'],['per','te','lu','ran'],['mer','li','lin'],];
+daftarKata[134] = [['ro','man','tis'],['e','pi','ku','ris'],['se','no','morfis','me'],['seno','mor','fis','me'],['mi','mis']];
+daftarKata[135] = [['at'],['se','pen','ju','lat'],['ju','hut'],['ret','ro','ma','mal'],['di','sa','yat']];
+daftarKata[141] = [['me','ngi','ting'],['ber','lan','ting'],['pung','lor'],['ber','terang','-tera','ngan'],['ber','terang','-te','rangan'],['ber','terang'],['tang','kul'],['me','mang','kas'],['ter','lang','kah','kan'],];
 daftarKata[143] = [['ter','ke','lem','pai'],['pa','ra','sai','ling'],['man','dai']];
 daftarKata[144] = [['auto','ni','sa','si'],['rau','da','tul','janah']];
 daftarKata[151] = [['ra','dio','li','sis'],['bio','akti','vi','tas'],['bio','ak','tivi','tas'],['bio','ak','ti','vitas']];
 daftarKata[163] = [['zoi','dio','fo','li'],];
-daftarKata[167] = [['se','tiar'],['nef','ri','dium'],];
+daftarKata[167] = [['ak','tuil'],['ke','ha','ruan'],['se','tiar'],['nef','ri','dium'],];
 daftarKata[168] = [['my','ri','ca']];
 </script>
 
@@ -341,6 +347,10 @@ function cekEjaan(lihatBacaan,levelMengeja){
           var kataAcak = ['a', 'ba'];
           var levelAsli = parseInt(document.getElementById('daftarLevel').value);
           level = 0 + parseInt(document.getElementById('daftarLevel').value);
+          daftarHurufHidup = daftarHurufHidupback;
+          for (i = 0; i < daftarDobelHuruf.length;i++){
+            if (levelAsli > 189 + 5*i){daftarHurufHidup.push(daftarDobelHuruf[i]);}
+          }
           levelMengeja = level - levelEjaan;
           if (level > 1){
             for (let i = 2; i < (level + 1); i++){
@@ -363,12 +373,15 @@ function cekEjaan(lihatBacaan,levelMengeja){
               if ((Math.random() < 1/2)&&(level > 1)){kata = kataAcak[kataAcak.length-ulangSebelum];}
               if ((daftarHurufVokal2.includes(kata[0]))&&(kata.length>1)){
                if(daftarHurufVokal2.includes(kata[1])){
-               kata=daftarHurufMati3[Math.floor(daftarHurufMati3.length*Math.random())]+kata;
+               kata=daftarHurufHidup[Math.floor(daftarHurufHidup.length*Math.random())]+kata;
                }
               }
-              if (kata[0]=='.'){kata=kataAcak[Math.floor(Math.random()*114)+1]+kata.split('...')[1];}
-              if (kata.split('+').length > 1){kata=`${daftarHurufMati3[Math.floor(daftarHurufMati3.length*Math.random())]}${daftarHurufVokal2[Math.floor(daftarHurufVokal2.length*Math.random())]}${daftarHurufVokal2[Math.floor(daftarHurufVokal2.length*Math.random())]}${daftarHurufMati25[Math.floor(daftarHurufMati25.length*Math.random())]}`;}
-              if (kata.split('vokal').length > 1){kata=`${daftarHurufMati3[Math.floor(daftarHurufMati3.length*Math.random())]}${kata.split(' vokal')[0]}`;
+              if (kata[0]=='.'){
+                 if ((levelAsli > 189)&&(Math.random()<1/2)){kata=kataAcak[Math.floor(Math.random()*(levelAsli-190))+189]+kata.split('...')[1];}
+                 else{kata=kataAcak[Math.floor(Math.random()*119)+1]+kata.split('...')[1];}
+              }
+              if (kata.split('+').length > 1){kata=`${daftarHurufHidup[Math.floor(daftarHurufHidup.length*Math.random())]}${daftarHurufVokal2[Math.floor(daftarHurufVokal2.length*Math.random())]}${daftarHurufVokal2[Math.floor(daftarHurufVokal2.length*Math.random())]}${daftarHurufMati25[Math.floor(daftarHurufMati25.length*Math.random())]}`;}
+              if (kata.split('vokal').length > 1){kata=`${daftarHurufHidup[Math.floor(daftarHurufHidup.length*Math.random())]}${kata.split(' vokal')[0]}`;
                 if (Math.random() < 1/2){kata += daftarHurufMati3[Math.floor(daftarHurufMati25.length*Math.random())];}
               }
               if (kata.split('(mengeja)').length > 1){kata=`${kata.split(' (mengeja)')[0]}`;}
@@ -381,7 +394,7 @@ function cekEjaan(lihatBacaan,levelMengeja){
           // Hapus tag tr terakhir yang tidak diperlukan
           hasilTabel += '</tr>';
           document.getElementById('isiBaca').innerHTML = hasilTabel;
-          daftarDaftarKata = [16,99,125,127,128,130,131,133,134,135,141,143,144,151,163,167,168];
+          daftarDaftarKata = [5,16,56,78,99,125,127,128,130,131,133,134,135,141,143,144,151,163,167,168];
           for (let i = 4; i < 6; i++) {if ((Math.random()<1/2)&&(level>121)){
             pilihanDaftarKata = daftarDaftarKata[Math.floor(Math.random()*daftarDaftarKata.length)];
             while (level < pilihanDaftarKata){pilihanDaftarKata = daftarDaftarKata[Math.floor(Math.random()*daftarDaftarKata.length)];}
@@ -426,12 +439,15 @@ function cekEjaan(lihatBacaan,levelMengeja){
               if ((Math.random() < 1/2)&&(level > 1)){kata = kataAcak[kataAcak.length-ulangSebelum];}
               if ((daftarHurufVokal2.includes(kata[0]))&&(kata.length>1)){
                if(daftarHurufVokal2.includes(kata[1])){
-               kata=daftarHurufMati3[Math.floor(daftarHurufMati3.length*Math.random())]+kata;
+               kata=daftarHurufHidup[Math.floor(daftarHurufHidup.length*Math.random())]+kata;
                }
               }
-              if (kata[0]=='.'){kata=kataAcak[Math.floor(Math.random()*114)+1]+kata.split('...')[1];}
-              if (kata.split('+').length > 1){kata=`${daftarHurufMati3[Math.floor(daftarHurufMati3.length*Math.random())]}${daftarHurufVokal2[Math.floor(daftarHurufVokal2.length*Math.random())]}${daftarHurufVokal2[Math.floor(daftarHurufVokal2.length*Math.random())]}${daftarHurufMati25[Math.floor(daftarHurufMati25.length*Math.random())]}`;}
-              if (kata.split('vokal').length > 1){kata=`${daftarHurufMati3[Math.floor(daftarHurufMati3.length*Math.random())]}${kata.split(' vokal')[0]}`;
+              if (kata[0]=='.'){
+                 if ((levelAsli > 189)&&(Math.random()<1/2)){kata=kataAcak[Math.floor(Math.random()*(levelAsli-190))+189]+kata.split('...')[1];}
+                 else{kata=kataAcak[Math.floor(Math.random()*119)+1]+kata.split('...')[1];}
+              }
+              if (kata.split('+').length > 1){kata=`${daftarHurufHidup[Math.floor(daftarHurufHidup.length*Math.random())]}${daftarHurufVokal2[Math.floor(daftarHurufVokal2.length*Math.random())]}${daftarHurufVokal2[Math.floor(daftarHurufVokal2.length*Math.random())]}${daftarHurufMati25[Math.floor(daftarHurufMati25.length*Math.random())]}`;}
+              if (kata.split('vokal').length > 1){kata=`${daftarHurufHidup[Math.floor(daftarHurufHidup.length*Math.random())]}${kata.split(' vokal')[0]}`;
                 if (Math.random() < 1/2){kata += daftarHurufMati3[Math.floor(daftarHurufMati25.length*Math.random())];}
               }
               if (kata.split('(mengeja)').length > 1){kata=`${kata.split(' (mengeja)')[0]}`;}
