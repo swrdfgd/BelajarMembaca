@@ -249,7 +249,7 @@
       option.textContent = `Level ${option.value} - ${daftarHurufMati2[i]} (mengeja)`;
 
       // menambahkan elemen option ke dalam select
-      select.appendChild(option);
+      select.appendChild(option); 
       daftarKata.push([]);
       levelTerakhir++;
     }
@@ -313,7 +313,8 @@
       option.textContent = `Level ${option.value} - c dibaca k`;
 
       // menambahkan elemen option ke dalam select
-      select.appendChild(option);
+      //ingat perbaiki level ini
+      //select.appendChild(option); bagian ini hapus slash slashnya
       daftarCdibacaK = ['divaricatum','myrica'];
 
       daftarKata.push([]);
