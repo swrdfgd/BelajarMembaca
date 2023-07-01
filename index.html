@@ -6,6 +6,12 @@
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js' type='text/javascript'></script>
   <!-- Tambahkan style untuk menghilangkan border pada tabel, memberikan jarak antara sel-sel, dan mengubah ukuran font -->
   <style>
+    body
+    {
+    background-image: url(background.png);
+    background-repeat: no-repeat;
+    background-size:cover;
+    }
     table {
       border-collapse: collapse;
       margin: 0 auto;
@@ -329,7 +335,7 @@
 
       // menambahkan elemen option ke dalam select
       select.appendChild(option)
-      daftarCdibacaK = ['divaricatum','myrica'];
+      daftarCdibacaK = ['divaricatum','myrica','areca'];
 
       daftarKata.push([]);
       levelTerakhir++;
@@ -364,45 +370,51 @@ daftarKata[71] = [['ge','di']];
 daftarKata[75] = [['ke','ce','le']];
 daftarKata[76] = [['me','ru','su','hi'],['me','ru','ji']];
 daftarKata[78] = [['pe','pa','ru']];
+daftarKata[80] = [['a','re','ca']];
+daftarKata[89] = [['bo','se','ta']];
 daftarKata[93] = [['ru','go','sa']];
 daftarKata[97] = [['lo','go']];
 daftarKata[99] = [['no','va']];
 daftarKata[102] = [['me','ro','go','ni']];
-daftarKata[103] = [['so','na','ta']];
+daftarKata[103] = [['ma','so','yi'],['so','na','ta']];
+daftarKata[107] = [['ki','yo']];
 daftarKata[110] = [['me','nga','bu'],['me','nga','wa','ni']];
 daftarKata[113] = [['me','nge','bi','ri']];
-daftarKata[115] = [['pe','nya','ru']];
+daftarKata[115] = [['ke','pu','nya','an'],['pe','nya','ru']];
 daftarKata[120] = [['mub','ta','di'],['jab']];
+daftarKata[123] = [['mu','ta','wif']];
 daftarKata[124] = [['gu','deg'],['me','ga','dig','ma']];
 daftarKata[125] = [['ta','ruh','lah'],['me','le','nguh'],['tumbuh','-tum','bu','han'],['tum','buh','-tumbu','han'],['tumbuh','tum','bu','han'],['tum','buh','tumbu','han'],['ke','tah'],['me','le','pih'],['ge','le','dah']];
 daftarKata[127] = [['dak','ti','log','rafi'],['dak','tilog','ra','fi'],['dakti','log','ra','fi'],['ge','le','tik'],['me','ngok'],['a','fi','tik'],['pu','nuk'],['ru','bik'],['se','nguk','-se','ngak'],['se','nguk','se','ngak'],['pe','le','tek'],['me','no','bak'],['e','fek','tif','nya'],['ke','pik'],['an','ti','pire','tik'],['anti','pi','re','tik'],['bu','tik'],['ko','rek','tif'],['pa','tok'],['me','li','rik'],['pa','si','fik'],['tu','na','dak','sa'],['suk','la','pak','sa'],['te','ra','kuk'],];
-daftarKata[128] = [['ke','kel'],['pe','sal','to'],['sul','fo','li','pid'],['mo','no','kel'],['te','bal'],['zul','kif','li'],['pu','kul','-me','mukul'],['pukul','-me','mu','kul'],['pu','kul','me','mukul'],['pukul','me','mu','kul'],['la','pel'],['sa','bi','lil','lah'],];
+daftarKata[128] = [['kal','pa','ta','ru'],['re','yal'],['pa','nel'],['ke','kel'],['pe','sal','to'],['sul','fo','li','pid'],['mo','no','kel'],['te','bal'],['zul','kif','li'],['pu','kul','-me','mukul'],['pukul','-me','mu','kul'],['pu','kul','me','mukul'],['pukul','me','mu','kul'],['la','pel'],['sa','bi','lil','lah'],];
 daftarKata[129] = [['em','pi','ri'],['me','nye','ngam'],['jem','pa','lik'],['po','dem','po','rem'],['am','beg'],['me','ngu','pam'],['ka','sam'],['di','tem','pa'],['gu','dam'],['mem','be','lu','dak'],['sem','po','yo','ngan'],['sam','pu']];
-daftarKata[130] = [['ca','pe','lin'],['be','lan','tuk'],['sam','ba','ngan'],['ru','kun','nya'],['ma','kan','tuh'],['mem','pu','nya','kan'],['be','ragah','-aga','han'],['bera','gah','-aga','han'],['be','ragah','aga','han'],['bera','gah','aga','han'],['ke','le','ba','tan'],['di','wi','rid','kan'],['ran','sum'],['di','nya','nyi','kan'],['ke','ri','da','an'],['ke','tuan','-tua','nan'],['ke','tuan','tua','nan'],['can','dik'],['ka','kan','da'],['men','je','rem','ba'],['ju','lu','kan'],['men','de','rum'],['en','to','mo','log'],['pe','ti','si','wan'],['pe','nge','ta','man'],['ak','sen'],['je','ri','gen'],['me','lon','jak'],['di','ba','ngun'],['e','mig','ran'],['ke','da','era','han'],['ke','dae','ra','han'],['pe','la','yon'],['sa','ma','ran'],['wa','jan'],['se','ben','tuk'],['be','kan','tan'],['me','nam','buh','kan'],['ke','ge','mu','kan'],['ke','ku','rato','ran'],['ke','kura','to','ran'],['me','lan','da'],['nu','san','ta','ra'],['ke','ku','ku','han'],['me','mon','dok','kan'],['ho','ri','zon','tal'],['ku','lu','ban'],['be','ri','man'],['men','den','da'],['ke','ri','ni','ngan'],['sa','ka','pan'],['sa','ri','ngan'],['men','seren','da','hi'],['te','rangan'],['tera','ngan'],['te','ra','ngan'],['ba','lu','han'],['a','li','ran'],['se','ra','pan'],['jam','ban'],['pe','nye','lesai','an'],['pe','nyele','sai','an'],['men','tol'],['te','la','kan'],['a','tu','ran'],['un','jun'],['be','ri','ngin'],['co','ba','an'],['men','du','kun','kan'],];
+daftarKata[130] = [['me','ru','tin','kan'],['awan','-be','ra','wan'],['a','wan','-be','rawan'],['awan','be','ra','wan'],['a','wan','be','rawan'],['me','nyu','di','kan'],['nge','den'],['ca','pe','lin'],['be','lan','tuk'],['sam','ba','ngan'],['ru','kun','nya'],['ma','kan','tuh'],['mem','pu','nya','kan'],['be','ragah','-aga','han'],['bera','gah','-aga','han'],['be','ragah','aga','han'],['bera','gah','aga','han'],['ke','le','ba','tan'],['di','wi','rid','kan'],['ran','sum'],['di','nya','nyi','kan'],['ke','ri','da','an'],['ke','tuan','-tua','nan'],['ke','tuan','tua','nan'],['can','dik'],['ka','kan','da'],['men','je','rem','ba'],['ju','lu','kan'],['men','de','rum'],['en','to','mo','log'],['pe','ti','si','wan'],['pe','nge','ta','man'],['ak','sen'],['je','ri','gen'],['me','lon','jak'],['di','ba','ngun'],['e','mig','ran'],['ke','da','era','han'],['ke','dae','ra','han'],['pe','la','yon'],['sa','ma','ran'],['wa','jan'],['se','ben','tuk'],['be','kan','tan'],['me','nam','buh','kan'],['ke','ge','mu','kan'],['ke','ku','rato','ran'],['ke','kura','to','ran'],['me','lan','da'],['nu','san','ta','ra'],['ke','ku','ku','han'],['me','mon','dok','kan'],['ho','ri','zon','tal'],['ku','lu','ban'],['be','ri','man'],['men','den','da'],['ke','ri','ni','ngan'],['sa','ka','pan'],['sa','ri','ngan'],['men','seren','da','hi'],['te','rangan'],['tera','ngan'],['te','ra','ngan'],['ba','lu','han'],['a','li','ran'],['se','ra','pan'],['jam','ban'],['pe','nye','lesai','an'],['pe','nyele','sai','an'],['men','tol'],['te','la','kan'],['a','tu','ran'],['un','jun'],['be','ri','ngin'],['co','ba','an'],['men','du','kun','kan'],];
 daftarKata[131] = [['ko','kop'],['ge','rip']];
-daftarKata[133] = [['se','nur'],['ter','je','bak'],['me','ngun','jur','kan'],['ba','ngir'],['me','ngem','par'],['a','sar'],['men','de','ta','sir'],['si','bir'],['ber','agah','aga','han'],['ber','agah','-aga','han'],['ber','al','ko','hol'],['se','u','kur'],['ter','can','tum'],['ber','sa','sa','ran'],['ter','co','cok'],['ber','tanda','-tanda','an'],['ber','tanda','tanda','an'],['be','le','sir'],['ter','a','nyar'],['ver','ben','tuk'],['ter','de','ngar','lah'],['cer','cap'],['ber','har','ga'],['se','per','tiga','nya'],['seper','ti','ga','nya'],['ber','kum','pul'],['per','ki','ri','man'],['ter','be','nam'],['man','dor'],['ber','po','li','gami'],['ber','poli','ga','mi'],['am','ber'],['ter','ke','lap'],['non','po','lar'],['ber','i','man'],['di','pun','tir'],['mer','ta','pal'],['me','nge','jar'],['ku','mur'],['ber','pan','cu','ran'],['per','te','lu','ran'],['mer','li','lin'],];
-daftarKata[134] = [['is','tis','lah'],['me','ngom','pos'],['ma','kas'],['men','je','nis'],['pas','rah'],['nis'],['ren','tas'],['bis','kal'],['her','pes','tes'],['ro','man','tis'],['e','pi','ku','ris'],['se','no','morfis','me'],['seno','mor','fis','me'],['mi','mis']];
-daftarKata[135] = [['ra','lat'],['ter','ka','put'],['me','gat','ruh'],['le','vot','ro','pik'],['pu','ngut'],['mus','ket'],['me','mam','pat','kan'],['set','rap'],['je','ngit'],['me','ram','but'],['me','ma','lit','kan'],['ter','sum','bat'],['ke','ra','bat'],['co','mat','co','mot'],['co','mat','-co','mot'],['ke','mot','rop'],['e','ti','ket'],['li','mit'],['ke','bat','-ke','bit'],['ke','bat','ke','bit'],['fit','ri'],['ber','ca','rut'],['di','rek','to','rat'],['at'],['se','pen','ju','lat'],['ju','hut'],['ret','ro','ma','mal'],['di','sa','yat']];
-daftarKata[141] = [['meng','gem','bol'],['ring','kuk'],['an','cing'],['tang','kas'],['sang','gep'],['peng','ga','las'],['ter','tang','kup'],['me','ren','tang','kan'],['ber','in','sang'],['be','rin','sang'],['di','pang','kas'],['pe','da','ging'],['se','ke','ring'],['ber','ge','lem','bung'],['pem','bong','kar'],['peng','hen','ti'],['meng','ga','bak'],['be','lin','tang'],['long','gar'],['rom','beng'],['ke','berangka','tan','nya'],['ke','berang','katan','nya'],['ke','be','rangkatan','nya'],['di','seng','sara','kan'],['di','sengsa','ra','kan'],['peng','gam','par'],['mang','ga','la'],['pan','tang'],['ber','ga','dang'],['seng','ka','lun'],['di','si','dang','kan'],['ber','teng','gang','-tenggangan'],['ber','tenggang','-tengga','ngan'],['ber','teng','gang','tenggangan'],['ber','tenggang','tengga','ngan'],['meng','ga','pit'],['meng','ga','gap'],['meng','ge','lincir','kan'],['meng','gelin','cir','kan'],['me','ngi','ting'],['ber','lan','ting'],['pung','lor'],['ber','terang','-tera','ngan'],['ber','terang','te','rangan'],['ber','terang','-te','rangan'],['ber','terang'],['tang','kul'],['me','mang','kas'],['ter','lang','kah','kan'],];
+daftarKata[133] = [['ber','sak','si'],['ber','pa','pah'],['se','ko','nar'],['me','ngu','bur'],['keber','hasi','lan','nya'],['ber','ma','ti','-mati'],['ber','mati','-ma','ti'],['ber','ma','ti','mati'],['ber','mati','ma','ti'],['mem','ba','lur'],['me','nger','kah'],['se','nur'],['ter','je','bak'],['me','ngun','jur','kan'],['ba','ngir'],['me','ngem','par'],['a','sar'],['men','de','ta','sir'],['si','bir'],['ber','agah','aga','han'],['ber','agah','-aga','han'],['ber','al','ko','hol'],['se','u','kur'],['ter','can','tum'],['ber','sa','sa','ran'],['ter','co','cok'],['ber','tanda','-tanda','an'],['ber','tanda','tanda','an'],['be','le','sir'],['ter','a','nyar'],['ver','ben','tuk'],['ter','de','ngar','lah'],['cer','cap'],['ber','har','ga'],['se','per','tiga','nya'],['seper','ti','ga','nya'],['ber','kum','pul'],['per','ki','ri','man'],['ter','be','nam'],['man','dor'],['ber','po','li','gami'],['ber','poli','ga','mi'],['am','ber'],['ter','ke','lap'],['non','po','lar'],['ber','i','man'],['di','pun','tir'],['mer','ta','pal'],['me','nge','jar'],['ku','mur'],['ber','pan','cu','ran'],['per','te','lu','ran'],['mer','li','lin'],];
+daftarKata[134] = [['me','nu','kas'],['kak','tus'],['ka','lo','ri','sitas'],['ka','lori','si','tas'],['kalo','ri','si','tas'],['pa','ra','doxu','rus'],['para','do','xu','rus'],['is','tis','lah'],['me','ngom','pos'],['ma','kas'],['men','je','nis'],['pas','rah'],['nis'],['ren','tas'],['bis','kal'],['her','pes','tes'],['ro','man','tis'],['e','pi','ku','ris'],['se','no','morfis','me'],['seno','mor','fis','me'],['mi','mis']];
+daftarKata[135] = [['ter','su','rut'],['ber','se','la','put'],['ra','lat'],['ter','ka','put'],['me','gat','ruh'],['le','vot','ro','pik'],['pu','ngut'],['mus','ket'],['me','mam','pat','kan'],['set','rap'],['je','ngit'],['me','ram','but'],['me','ma','lit','kan'],['ter','sum','bat'],['ke','ra','bat'],['co','mat','co','mot'],['co','mat','-co','mot'],['ke','mot','rop'],['e','ti','ket'],['li','mit'],['ke','bat','-ke','bit'],['ke','bat','ke','bit'],['fit','ri'],['ber','ca','rut'],['di','rek','to','rat'],['at'],['se','pen','ju','lat'],['ju','hut'],['ret','ro','ma','mal'],['di','sa','yat']];
+daftarKata[141] = [['sing','gir'],['pen','ja','ring'],['meng','ha','da','pi'],['ber','cam','bang'],['be','reng','-be','reng'],['be','reng','be','reng'],['meng','gem','bol'],['ring','kuk'],['an','cing'],['tang','kas'],['sang','gep'],['peng','ga','las'],['ter','tang','kup'],['me','ren','tang','kan'],['ber','in','sang'],['be','rin','sang'],['di','pang','kas'],['pe','da','ging'],['se','ke','ring'],['ber','ge','lem','bung'],['pem','bong','kar'],['peng','hen','ti'],['meng','ga','bak'],['be','lin','tang'],['long','gar'],['rom','beng'],['ke','berangka','tan','nya'],['ke','berang','katan','nya'],['ke','be','rangkatan','nya'],['di','seng','sara','kan'],['di','sengsa','ra','kan'],['peng','gam','par'],['mang','ga','la'],['pan','tang'],['ber','ga','dang'],['seng','ka','lun'],['di','si','dang','kan'],['ber','teng','gang','-tenggangan'],['ber','tenggang','-tengga','ngan'],['ber','teng','gang','tenggangan'],['ber','tenggang','tengga','ngan'],['meng','ga','pit'],['meng','ga','gap'],['meng','ge','lincir','kan'],['meng','gelin','cir','kan'],['me','ngi','ting'],['ber','lan','ting'],['pung','lor'],['ber','terang','-tera','ngan'],['ber','terang','te','rangan'],['ber','terang','-te','rangan'],['ber','terang'],['tang','kul'],['me','mang','kas'],['ter','lang','kah','kan'],];
 daftarKata[143] = [['pe','ngu','rai','an'],['men','cer','cai'],['me','nga','bai','kan'],['ta','sai'],['ter','ke','lem','pai'],['pa','ra','sai','ling'],['man','dai']];
-daftarKata[144] = [['si','lau'],['sa','la','bau'],['auto','ni','sa','si'],['rau','da','tul','janah']];
-daftarKata[147] = [['neg','ro','fi','lia'],['tu','ni','sia'],['mem','per','sia','ngi']];
-daftarKata[149] = [['mi','liu'],['u','tang','-piu','tang'],['u','tang','piu','tang'],];
+daftarKata[144] = [['fir','dau','si'],['si','lau'],['sa','la','bau'],['auto','ni','sa','si'],['rau','da','tul','janah']];
+daftarKata[147] = [['bia','ya'],['neg','ro','fi','lia'],['tu','ni','sia'],['mem','per','sia','ngi']];
+daftarKata[149] = [['riu','ngan'],['mi','liu'],['u','tang','-piu','tang'],['u','tang','piu','tang'],];
 daftarKata[151] = [['dio','de'],['pe','ngio','nan'],['ma','yok','ra','tio'],['a','fasio','lo','gi'],['a','fa','sio','logi'],['ra','dio','li','sis'],['bio','akti','vi','tas'],['bio','ak','tivi','tas'],['bio','ak','ti','vitas']];
-daftarKata[152] = [['tua','lah'],['per','tua'],['ber','kutu','-ku','tuan'],['ber','kutu','ku','tuan'],];
+daftarKata[152] = [['bua','han'],['tua','lah'],['per','tua'],['ber','kutu','-ku','tuan'],['ber','kutu','ku','tuan'],];
 daftarKata[157] = [['am','fi','tea','ter'],];
 daftarKata[161] = [['pe','neo','nan'],];
 daftarKata[163] = [['e','te','noi','da'],['zoi','dio','fo','li'],];
-daftarKata[167] = [['cuang','-caing'],['cuang','caing'],['pe','ngu','rai','an'],['pair'],['ber','siut'],['se','buah'],['ak','tuil'],['ke','ha','ruan'],['se','tiar'],['nef','ri','dium'],];
+daftarKata[167] = [['buah','-bua','han'],['buah','bua','han'],['mit','ra','liur'],['la','sias'],['cuang','-caing'],['cuang','caing'],['pe','ngu','rai','an'],['pair'],['ber','siut'],['se','buah'],['ak','tuil'],['ke','ha','ruan'],['se','tiar'],['nef','ri','dium'],];
 daftarKata[168] = [['my','ri','ca']];
 daftarKata[195] = [['dam','prat'],['pra','se','ko','lah']];
 daftarKata[200] = [['stan']];
+daftarKata[201] = [['in','sting','tif']];
 daftarKata[208] = [['flek','sor']];
 daftarKata[215] = [['ma','yo','kra','tio']];
 daftarKata[221] = [['tri','tung','gal']];
 daftarKata[224] = [['le','vo','tro','pik'],['e','lek','tro','kimia'],['e','lektro','ki','mia'],['elek','tro','ki','mia'],['ke','mo','trop']];
-daftarKata[230] = [['dak','ti','lo','grafi'],['dak','tilo','gra','fi'],['dakti','lo','gra','fi']];
+daftarKata[230] = [['gra','fo','lo','gis'],['ak','ti','no','graf'],['dak','ti','lo','grafi'],['dak','tilo','gra','fi'],['dakti','lo','gra','fi']];
 daftarKata[247] = [['musy','kil']];
+daftarKata[260] = [['spi','no','sus']];
 </script>
 
 
@@ -418,7 +430,7 @@ function cekEjaan(lihatBacaan,levelMengeja){
 </script>
 
   <!-- Buat sebuah tabel untuk menampilkan hasil -->
-  <table>
+  <table style="background-color: white;">
     <!-- Buat sebuah loop untuk menampilkan baris -->
     <tbody id = 'isiBaca'>
     </tbody>
@@ -491,7 +503,7 @@ function cekEjaan(lihatBacaan,levelMengeja){
           // Hapus tag tr terakhir yang tidak diperlukan
           hasilTabel += '</tr>';
           document.getElementById('isiBaca').innerHTML = hasilTabel;
-          daftarDaftarKata = [5,12,16,33,40,46,47,52,56,71,75,76,78,93,97,99,102,103,113,115,120,124,125,127,128,129,130,131,133,134,135,141,143,144,147,149,151,152,157,161,163,167,168,195,200,208,215,221,224,230,247];
+          daftarDaftarKata = [5,12,16,33,40,46,47,52,56,71,75,76,78,80,89,93,97,99,102,103,107,113,115,120,123,124,125,127,128,129,130,131,133,134,135,141,143,144,147,149,151,152,157,161,163,167,168,195,200,201,208,215,221,224,230,247,260];
           for (let i = 4; i < 6; i++) {if ((Math.random()<1/2)&&(level>daftarDaftarKata[0]-1)){
             pilihanDaftarKata = daftarDaftarKata[Math.floor(Math.random()*daftarDaftarKata.length)];
             while (level < pilihanDaftarKata){pilihanDaftarKata = daftarDaftarKata[Math.floor(Math.random()*daftarDaftarKata.length)];}
