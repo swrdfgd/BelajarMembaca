@@ -571,8 +571,8 @@ function cekEjaan(lihatBacaan,levelMengeja){
           // Hapus tag tr terakhir yang tidak diperlukan
           hasilTabel += '</tr>';
           document.getElementById('isiBaca').innerHTML = hasilTabel;
-          daftarDaftarKata = [5,12,16,33,40,46,47,52,56,71,75,76,78,80,89,93,97,99,102,103,107,113,115,120,123,124,125,127,128,129,130,131,133,134,135,141,143,144,147,149,151,152,157,161,163,167,168,195,200,201,208,215,221,224,230,247,260];
-          for (let i = 4; i < 6; i++) {if ((Math.random()<1/2)&&(level>daftarDaftarKata[0]-1)){
+		  daftarDaftarKata = [5, 12, 16, 32, 33, 40, 46, 47, 52, 54, 55, 56, 71, 75, 76, 78, 80, 82, 84, 89, 93, 97, 99, 102, 103, 107, 110, 112, 113, 115, 120, 123, 124, 125, 127, 128, 129, 130, 131, 133, 134, 135, 141, 143, 144, 147, 149, 151, 152, 157, 161, 163, 167, 168, 195, 198, 200, 201, 208, 215, 220, 221, 224, 230, 247, 260];
+		  for (let i = 4; i < 6; i++) {if ((Math.random()<1/2)&&(level>daftarDaftarKata[0]-1)){
             pilihanDaftarKata = daftarDaftarKata[Math.floor(Math.random()*daftarDaftarKata.length)];
             while (level < pilihanDaftarKata){pilihanDaftarKata = daftarDaftarKata[Math.floor(Math.random()*daftarDaftarKata.length)];}
             daftarKataTerpilih = daftarKata[pilihanDaftarKata];
@@ -621,10 +621,22 @@ function cekEjaan(lihatBacaan,levelMengeja){
                kata=daftarHurufHidup[Math.floor(daftarHurufHidup.length*Math.random())]+kata;
                }
               }
-              if (kata[0]=='.'){
-                 if ((levelAsli > 189)&&(Math.random()<1/2)){kata=kataAcak[Math.floor(Math.random()*(levelAsli-190))+189]+kata.split('...')[1];}
-                 else{kata=kataAcak[Math.floor(Math.random()*119)+1]+kata.split('...')[1];}
-              }
+				if (kata[0] == '.') {
+					 let awalan;
+					 if ((levelAsli > 189) && (Math.random() < 1/2)) {
+						 // Lakukan pengacakan ulang jika awalan yang terpilih diawali dengan titik
+						 do {
+							 awalan = kataAcak[Math.floor(Math.random() * (levelAsli - 190)) + 189];
+						 } while (awalan[0] == '.');
+						 kata = awalan + kata.split('...')[1];
+					 } else {
+						 // Lakukan pengacakan ulang jika awalan yang terpilih diawali dengan titik
+						 do {
+							 awalan = kataAcak[Math.floor(Math.random() * 119) + 1];
+						 } while (awalan[0] == '.');
+						 kata = awalan + kata.split('...')[1];
+					 }
+				}
               if (kata.split('+').length > 1){kata=`${daftarHurufHidup[Math.floor(daftarHurufHidup.length*Math.random())]}${daftarHurufVokal2[Math.floor(daftarHurufVokal2.length*Math.random())]}${daftarHurufVokal2[Math.floor(daftarHurufVokal2.length*Math.random())]}${daftarHurufMati25[Math.floor(daftarHurufMati25.length*Math.random())]}`;}
               if (kata.split('vokal').length > 1){kata=`${daftarHurufHidup[Math.floor(daftarHurufHidup.length*Math.random())]}${kata.split(' vokal')[0]}`;
                 if (Math.random() < 1/2){kata += daftarHurufMati3[Math.floor(daftarHurufMati25.length*Math.random())];}
